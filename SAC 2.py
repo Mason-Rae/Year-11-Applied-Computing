@@ -8,6 +8,6 @@ for i in range(1, students+1):
     while periods not in range(1,5):
         periods = int(input("Number of periods that week(1-5): "))
     for j in range(1, periods+1):
-        globals()[f"period{j}_{i}"]= bool(input(f"Was student present for period {j}(T/F): "))
+        globals()[f"period{j}_{i}"]= input(f"Enter attendence for period {j}(P/A): ").lower()
     #Has 'Present' or 'Absent' entered for the periods
     
