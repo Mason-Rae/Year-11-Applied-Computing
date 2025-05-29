@@ -25,81 +25,89 @@ print("")
 
 for i in range(1, students+1):
 #Creates the loop to go through every stundent's classes and name
-    name = input(f"What was the name student {i}: ")
+    name = input(f"Enter the name of student {i}: ")
     name = name.capitalize()
     #Gets student's name and auto capitalises
-    while True:
-        if classes >= 1:
-            class1 = input(f"Was {name} present for period 1(P/A): ")
-            class1 = class1.lower()
-            if class1 == "p":
-                class1 = 1
-            elif class1 == "a":
-                class1 = 0
-        #Gets the answer for class 1 and sorts response into correct values, if matched
-        if classes >= 2:
-            class2 = input(f"Was {name} present for period 2(P/A): ")
-            class2 = class2.lower()
-            if class2 == "p":
-                class2 = 1
-            elif class2 == "a":
-                class2 = 0
-        #Gets the answer for class 2 and sorts response into correct values, if matched
-        if classes >= 3:
-            class3 = input(f"Was {name} present for period 3(P/A): ")
-            class3 = class3.lower()
-            if class3 == "p":
-                class3 = 1
-            elif class3 == "a":
-                class3 = 0
-        #Gets the answer for class 3 and sorts response into correct values, if matched
-        if classes >= 4:
-            class4 = input(f"Was {name} present for period 4(P/A): ")
-            class4 = class4.lower()
-            if class4 == "p":
-                class4 = 1
-            elif class4 == "a":
-                class4 = 0
-        #Gets the answer for class 4 and sorts response into correct values, if matched
-        if classes >= 5:
-            class5 = input(f"Was {name} present for period 5(P/A): ")
-            class5 = class5.lower()
-            if class5 == "p":
-                class5 = 1
-            elif class5 == "a":
-                class5 = 0
-        #Gets the answer for class 5 and sorts response into correct values, if matched
+    allClasses = input(f"Was {name} present for every class (Y/N): ")
+    allClasses = allClasses.lower()
+    #Checks first for if the student attended all class that week
+    if allClasses == "y":
+        ave = 1
+        classesPresent = classes
+        #Sets variables at the correct number for the report
+    else:
+        while True:
+            if classes >= 1:
+                class1 = input(f"Enter attendence for {name} for period 1(P/A): ")
+                class1 = class1.lower()
+                if class1 == "p":
+                    class1 = 1
+                elif class1 == "a":
+                    class1 = 0
+            #Gets the answer for class 1 and sorts response into correct values, if matched
+            if classes >= 2:
+                class2 = input(f"Enter attendence for {name} for period 2(P/A): ")
+                class2 = class2.lower()
+                if class2 == "p":
+                    class2 = 1
+                elif class2 == "a":
+                    class2 = 0
+            #Gets the answer for class 2 and sorts response into correct values, if matched
+            if classes >= 3:
+                class3 = input(f"Enter attendence for {name} for period 3(P/A): ")
+                class3 = class3.lower()
+                if class3 == "p":
+                    class3 = 1
+                elif class3 == "a":
+                    class3 = 0
+            #Gets the answer for class 3 and sorts response into correct values, if matched
+            if classes >= 4:
+                class4 = input(f"Enter attendence for {name} for period 4(P/A): ")
+                class4 = class4.lower()
+                if class4 == "p":
+                    class4 = 1
+                elif class4 == "a":
+                    class4 = 0
+            #Gets the answer for class 4 and sorts response into correct values, if matched
+            if classes >= 5:
+                class5 = input(f"Enter attendence for {name} for period 5(P/A): ")
+                class5 = class5.lower()
+                if class5 == "p":
+                    class5 = 1
+                elif class5 == "a":
+                    class5 = 0
+            #Gets the answer for class 5 and sorts response into correct values, if matched
                 
-        match classes:      
-            case 5:
-                if (class1 and class2 and class3 and class4 and class5) in (1, 0):
-                    ave = (class1 + class2 + class3 + class4 + class5)/5
-                    break
-            case 4:
-                if (class1 and class2 and class3 and class4) in (1, 0):
-                    ave = (class1 + class2 + class3 + class4)/4
-                    break
-            case 3:
-                if (class1 and class2 and class3) in (1, 0):
-                    ave = (class1 + class2 + class3)/3
-                    break
-            case 2:
-                if (class1 and class2) in (1, 0):
-                    ave = (class1 + class2)/2
-                    break
-            case 1:
-                if class1 in (1, 0):
-                    ave = class1
-                    break
-        #Depending on the amount of classes as to which if is triggered
+            match classes:      
+                case 5:
+                    if (class1 and class2 and class3 and class4 and class5) in (1, 0):
+                        ave = (class1 + class2 + class3 + class4 + class5)/5
+                        break
+                case 4:
+                    if (class1 and class2 and class3 and class4) in (1, 0):
+                        ave = (class1 + class2 + class3 + class4)/4
+                        break
+                case 3:
+                    if (class1 and class2 and class3) in (1, 0):
+                        ave = (class1 + class2 + class3)/3
+                        break
+                case 2:
+                    if (class1 and class2) in (1, 0):
+                        ave = (class1 + class2)/2
+                        break
+                case 1:
+                    if class1 in (1, 0):
+                        ave = class1
+                        break
             
-        print("Repeat, something was wrong")
+            #Depending on the amount of classes as to which if is triggered
+            print("Repeat, something was wrong")
+        classesPresent = ave*classes
+        classesPresent = int(classesPresent)
+        #Reverts back to total amounts of attended classes
         print("")
         #Incase of emergency, guider
         
-    classesPresent = ave*classes
-    classesPresent = int(classesPresent)
-    #Reverts back to total amounts of attended classes
     ave = ave*100
     #Puts the average into a percentage
 
@@ -110,6 +118,7 @@ for i in range(1, students+1):
     #Makes code cleaner for the user
 
 attendanceRecords = open("AttendanceRecords.txt", "wt")
+#Opens the file to store the results
 
 print("Attendance Report:")
 #Title
